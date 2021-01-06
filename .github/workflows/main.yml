@@ -1,0 +1,19 @@
+name: build-aur
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '* * 5,15,20 * *'
+
+jobs:
+  build: 
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./action-a
+        with:
+          repo-name: ungoogled-chromium.git
